@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>City Night Layout - free website template</title>
-<meta name="keywords" content="city night layout, free template, CSS, HTML" />
+<meta name="keywords" content="dream projects,it project making" />
 <meta name="description" content="City Night layout is a free website template provided by templatemo.com" />
 <link href="<?php echo base_url()?>css/expandcss.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo base_url()?>css/common.css" rel="stylesheet" type="text/css" />
@@ -13,17 +13,40 @@
 <script src="<?php echo base_url()?>js/jquery.validate.min.js"></script>
 <script src="<?php echo base_url()?>js/loginform-validation.js"></script>
 <script src="<?php echo base_url()?>js/form-validation1.js"></script>
-
-
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
-  $( function() {
-    $( "#accordion" ).accordion();
-  } );
-  </script>
-</head>
+  $(document).ready(function() {
+	  $(".p_hide").hide();
+	  $(".mi").hide();
+	  $(".pl").show();
 
+	     function check(){
+	    	 $('.inputClass').each(function() {
+	 	        $(this).click(function(){
+	 	            var pp = $(this).attr('id');
+
+	 		  $("#minus"+pp).toggle();
+	 		  $("#plus"+pp).toggle();
+	 		  $("#s_"+pp).toggle();
+	 		  $("div #service_anchor_onclick"+pp).addClass("red");
+	 		  $("inputClass").addClass("return");
+	 		$(".inputClass").click(function(){
+	 			$("div #service_anchor_onclick"+pp).removeClass("red");
+	 			
+	 			});
+
+	 	  
+	 	            //Do whatever the edit function should do with the id
+	 	        });
+	 	     });
+		     }
+	     check();
+	  });
+  </script>
+
+</head>
+  <style type="text/css">
+
+  </style>
 <body>
 <div id="templatemo_wrapper1">
 <div id="templatemo_wrapper2">
@@ -36,8 +59,7 @@
 					?>
      <div id="templatemo_content">
 <div style="background-color:black;padding: 10px;margin: 10px;font-size:20px;">We can provide services for :</div>
-<ul type="disc">
- <div id="accordion">
+
 		<?php 
 		
 		
@@ -47,15 +69,12 @@
 						{
 						
 						
-								
-						echo '<h1> >>'.$s_anchor[$i]->anchor_name.'</h1>
-							  <div style="background-color:rgba(236, 240, 241,0.8);padding:10px;margin:10px;color:black;border-radius:5px;width:initial;height:initial;">'.$s_anchor[$i]->description.'</div>
+							echo '<div class="service-name" id='."service_anchor_onclick".$s_anchor[$i]->anchor_id.'><div class="service-expant-symbol"><lable class="pl" id='."plus".$s_anchor[$i]->anchor_id.'>+</lable><lable class="mi" id='."minus".$s_anchor[$i]->anchor_id.'>-</lable><a id='.$s_anchor[$i]->anchor_id.' href="#"  class="inputClass"/> '.$s_anchor[$i]->anchor_name.'</a></div></div>
+							  <div class="p_hide" id='."s_".$s_anchor[$i]->anchor_id.'> '.$s_anchor[$i]->description.'</div><br>
 							    ';	
 						}
 				  }
 				  ?>
- </div>
-	</ul>	
       </div>
     
 		<div id="templatemo_footer">
